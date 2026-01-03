@@ -2,6 +2,7 @@ package me.vamsikrishna.auth_demo.order.domain;
 
 import jakarta.persistence.*;
 import me.vamsikrishna.auth_demo.customer.domain.Customer;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -11,9 +12,13 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @CreationTimestamp
     private LocalDateTime date;
     private long amount;
 
@@ -28,7 +33,7 @@ public class OrderEntity {
         return customer;
     }
 
-    public void setCustomer_id(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
@@ -36,9 +41,6 @@ public class OrderEntity {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
 
     public long getAmount() {
         return amount;
@@ -46,6 +48,14 @@ public class OrderEntity {
 
     public void setAmount(long amount) {
         this.amount = amount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

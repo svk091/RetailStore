@@ -57,13 +57,13 @@ public class Customer {
         this.credits = credits;
     }
 
-    public List<OrderEntity> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<OrderEntity> orders) {
-        this.orders = orders;
-    }
+//    public List<OrderEntity> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<OrderEntity> orders) {
+//        this.orders = orders;
+//    }
 
     @Override
     public String toString() {
@@ -72,7 +72,6 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", phone=" + phone +
                 ", credits=" + credits +
-                ", orders=" + orders+
                 '}';
     }
 }
