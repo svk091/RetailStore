@@ -18,7 +18,7 @@ public class Customer {
     private String phone;
     private long credits = 0L;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderEntity> orders = new ArrayList<>();
+    private final List<OrderEntity> orders = new ArrayList<>();
 
     public Customer() {
     }
@@ -53,25 +53,33 @@ public class Customer {
         return credits;
     }
 
-    public void setCredits(long credits) {
-        this.credits = credits;
-    }
-
-//    public List<OrderEntity> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(List<OrderEntity> orders) {
-//        this.orders = orders;
-//    }
-
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", credits=" + credits +
+                ", orders=" + orders +
                 '}';
     }
+
+    public void setCredits(long credits) {
+        this.credits = credits;
+    }
+
+    public void addOrder(OrderEntity order) {
+        this.orders.add(order);
+        order.setCustomer(this);
+    }
+
+    public void removeOrder(OrderEntity order) {
+        this.orders.remove(order);
+        order.setCustomer(null);
+    }
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
 }

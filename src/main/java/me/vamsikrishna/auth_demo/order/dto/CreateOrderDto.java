@@ -3,8 +3,9 @@ package me.vamsikrishna.auth_demo.order.dto;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+
 public class CreateOrderDto {
-    @NotNull
+    @NotNull(message = "You better give a name")
     private String name;
     @NotNull
     @Positive

@@ -14,11 +14,12 @@ public class OrderResponseDto {
     public OrderResponseDto() {
     }
 
-    public OrderResponseDto(int id, CustomerResponseDto customerResponseDto, LocalDateTime date, long amount) {
+    public OrderResponseDto(int id,String name, CustomerResponseDto customerResponseDto, LocalDateTime date, long amount) {
         this.id = id;
         this.customerResponseDto = customerResponseDto;
         this.date = date;
         this.amount = amount;
+        this.name = name;
     }
 
     public int getId() {

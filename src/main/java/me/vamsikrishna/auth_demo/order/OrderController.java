@@ -1,13 +1,9 @@
 package me.vamsikrishna.auth_demo.order;
 
-import jakarta.validation.Valid;
 import me.vamsikrishna.auth_demo.order.dto.CreateOrderDto;
 import me.vamsikrishna.auth_demo.order.dto.OrderResponseDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import me.vamsikrishna.auth_demo.order.OrderService;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -19,7 +15,12 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderResponseDto add(@RequestBody @Valid CreateOrderDto dto) {
+    public OrderResponseDto add(@RequestBody @Validated CreateOrderDto dto) {
         return orderService.create(dto);
+    }
+
+    @GetMapping("/{id}")
+    public OrderResponseDto getOrderById(@PathVariable  int id) {
+        return orderService.getOrderById(id);
     }
 }
